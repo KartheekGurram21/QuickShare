@@ -20,7 +20,7 @@ function NavBar() {
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
-                <Navbar.Brand href="/">
+                <Navbar.Brand href={isAuthenticated?"/dashboard":"/"}>
                     <img
                         src={Logo}
                         alt="Logo"
@@ -31,9 +31,6 @@ function NavBar() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        {isAuthenticated && (
-                            <Nav.Link onClick={handleUpload}>Upload</Nav.Link>
-                        )}
                         <Nav.Link href="/pricing">Pricing</Nav.Link>
                         {isAuthenticated ? (
                             <Nav.Link onClick={handleLogout}>Logout</Nav.Link>

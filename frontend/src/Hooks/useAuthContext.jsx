@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext'; // Adjust the path as needed
 
 export function useAuthContext() {
@@ -11,17 +11,6 @@ export function useAuthContext() {
 
   const { state, dispatch } = context;
 
-  // Set the user from localStorage when the hook is first used
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      dispatch({
-        type: 'LOGIN_SUCCESS',
-        payload: { user: JSON.parse(storedUser) },
-      });
-    }
-  }, [dispatch]);
-
   // Function to set the user and store it in localStorage
   const setUser = (user) => {
     localStorage.setItem('user', JSON.stringify(user));
@@ -31,9 +20,7 @@ export function useAuthContext() {
     });
   };
 
-  const getUser = () => {
-    return state.user
-  }
+  const getUser = () => state.user;
 
   // Function to clear the user from state and localStorage
   const clearUser = () => {

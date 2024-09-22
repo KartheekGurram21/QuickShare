@@ -29,7 +29,7 @@ function HomeContent() {
                                 variant="contained"
                                 color="primary"
                                 startIcon={<CloudUploadIcon />}
-                                href="#upload"
+                                href="/signup"
                                 size="large"
                             >
                                 Get Started

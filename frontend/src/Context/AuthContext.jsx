@@ -3,8 +3,8 @@ import { createContext, useReducer } from "react";
 export const AuthContext = createContext();
 
 const initialState = {
-    user: null,
-    isAuthenticated: false,
+    user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
+    isAuthenticated: !!localStorage.getItem('user'),
     error: null,
 };
 
@@ -22,7 +22,7 @@ function authReducer(state, action) {
                 ...state,
                 user: null,
                 isAuthenticated: false,
-                error: action.payload.user,
+                error: action.payload.error,
             }
         case 'LOGOUT':
             return {

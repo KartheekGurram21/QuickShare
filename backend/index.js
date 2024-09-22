@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose')
 const userRoutes = require('./routes/userRoutes')
+const shareRoutes = require('./routes/shareRoutes')
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(cors({
 }));
 
 app.use('/api/user',userRoutes)
+app.use('/api/share',shareRoutes)
 
 mongoose.connect(uri)
 .then(res => {

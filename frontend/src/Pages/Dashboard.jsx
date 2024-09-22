@@ -7,9 +7,9 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 function Dashboard() {
     
     const { getUser } = useAuthContext()
-    const user = getUser()
+    const {fname, email} = getUser()
 
-    if(!user) {
+    if(!email) {
         return <Navigate to="/signup" />
     }
 
@@ -22,7 +22,7 @@ function Dashboard() {
                         <Card className="shadow-sm">
                             <Card.Body>
                                 <Card.Title as="h1" className="text-center mb-4">
-                                    Welcome, {}!
+                                    Welcome, {fname}!
                                 </Card.Title>
                                 <Card.Text className="text-center">
                                     This is your personalized dashboard. You can manage your uploads, check pricing, and more!
